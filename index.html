@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./web.css">
+    </head>
+    <body class="background">
+        <div class="Whole-style">
+            <h3 class = "top">ANIMI-FORMS</h3>
+        </div>
+        <form name="ANIMI-FORMS" onsubmit="formValidation(event)">
+            <h4 class = "top">ANIMI-Name</h4>
+            <input type="text" id="ANIMI-Name" class="style-input" required><br>
+            <h4 class = "top" >ANIMI-(ORIGIN-COUNTRY)</h4>
+            <select id="ANIMI-ORIGIN-COUNTRY" class="drop-down-style">
+                <option value="Pakistan">Select an option</option>
+                <option  value="India">INDIA</option>
+                <option value="China">CHINA</option>
+                <option value="Pakistan">PAKISTAN</option>
+                <option value="Srilanka">SRILANKA</option>
+              </select>
+            <h4 class = "top">No.of.Episodes</h4>
+            <input id="Episodes-count" class="style-input"><br>
+            <h4 class = "top">YOUR RATING</h4>
+            <input type="text" id="your-rating" class="style-input" required><br>
+            <h4 class = "top">REWARDS</h4>
+            <input type="text" id="rewards" class="style-input" required><br>
+        </form>
+        <div style="margin-left: 50%; margin-top: -500px">
+            <h4 class = "top">DESCRIPTION ABOUT ANIMI</h4>
+            <input id="Episodes-count" class="description-style"><br>
+            <input id="submit-form" type="submit" value="SUBMIT" class="submit">
+        </div>
+    </body>
+    <script>
+        document.getElementById("submit-form").addEventListener("click", function formValidation(eve){
+            eve.preventDefault();
+            var name = document.forms["ANIMI-FORMS"]["ANIMI-Name"].value;
+            let count = document.forms["ANIMI-FORMS"]["Episodes-count"].value;
+            const specialChars = `/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+ /;`
+            const isSpecialCharsPresent = specialChars.split('').some(char => 
+                name.includes(char))
+            if (name == "") {
+                alert("Must Fill the name");
+            }
+            else if (name.length > 15){
+                alert("Name size exceeds");
+            } else if (name.length < 8) {
+                alert("Name size should be greater than 8");
+            } else if (isSpecialCharsPresent){
+                alert("special charecter is present");
+            } else if (isNaN(count)){
+                alert("No.of.Episodies must be numbers")
+            } else {
+                alert(true)
+                return true;
+            }
+        });
+    </script>
+</html>
